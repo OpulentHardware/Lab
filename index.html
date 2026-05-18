@@ -6,7 +6,234 @@
 
   <title>OPULENT HARDWARE LAB</title>
 
-  <link rel="stylesheet" href="./assets/style.css?v=lab-landing-001" />
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #111;
+      --panel-2: #171717;
+      --text: #f4f4f4;
+      --muted: #9a9a9a;
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #d6ff00;
+      --accent-soft: rgba(214, 255, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(214, 255, 0, 0.08), transparent 34rem),
+        linear-gradient(135deg, #050505 0%, #0c0c0c 45%, #000 100%);
+      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 36px;
+    }
+
+    header {
+      margin-bottom: 44px;
+    }
+
+    .brand-logo {
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 6.25rem);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .sub-title {
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 0.84rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 56px 0 72px;
+    }
+
+    .lab-card {
+      position: relative;
+      display: block;
+      min-height: 320px;
+      padding: 28px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%),
+        linear-gradient(180deg, var(--panel-2), var(--panel));
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .lab-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -32% auto;
+      width: 320px;
+      height: 320px;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      filter: blur(12px);
+    }
+
+    .lab-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -32deg,
+          transparent 0,
+          transparent 18px,
+          rgba(255, 255, 255, 0.035) 19px,
+          rgba(255, 255, 255, 0.035) 20px
+        );
+      pointer-events: none;
+    }
+
+    .lab-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214, 255, 0, 0.6);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.58);
+    }
+
+    .lab-card-kicker {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      padding: 8px 10px;
+      margin-bottom: 46px;
+      border: 1px solid rgba(214, 255, 0, 0.34);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(214, 255, 0, 0.08);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .lab-card h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .lab-card p {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .lab-card-action {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 34px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #050505;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    footer {
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-kicker {
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .disclaimer {
+      max-width: 920px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+        padding-top: 32px;
+      }
+
+      .lab-card {
+        min-height: 300px;
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .lab-card-kicker {
+        margin-bottom: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
